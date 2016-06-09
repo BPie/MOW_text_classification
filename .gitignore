@@ -1,0 +1,6 @@
+*.swo
+bin
+lib
+*.swp
+.idea*
+.rope*
