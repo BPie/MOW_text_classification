@@ -12,6 +12,9 @@ sms_raw <- read.table(path_data_sms
 
 # setting column names
 colnames(sms_raw)  <- c("type", "message")
+
+# setting factors
+sms_raw$type  <- factor(sms_raw$type)
 str(sms_raw[1:10,])
 
 
