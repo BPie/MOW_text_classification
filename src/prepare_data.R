@@ -20,21 +20,12 @@ colnames(sms_raw)  <- c("type", "message")
 # setting factors
 sms_raw$type  <- factor(sms_raw$type)
 
-# creating corpus
-sms_corpus  <- VCorpus(VectorSource(sms_raw$message))
-sms_corpus  <- tm_map(sms_corpus,
-                      content_transformer(tolower))
-sms_corpus  <- tm_map(sms_corpus,
-                      removeNumbers)
-sms_corpus  <- tm_map(sms_corpus,
-                      removeWords,
-                      stopwords())
-sms_corpus  <- tm_map(sms_corpus,
-                      removePunctuation)
-sms_corpus <- tm_map(sms_corpus,
-                     stemDocument)
-sms_corpus <- tm_map(sms_corpus,
-                     stripWhitespace)
-
+# tokenizaition and corpus cleaning
+sms_dtm  <- DocumentTermMatrix(sms_corpus,
+                               control = list(tolower=TRUE
+                                              , removeNumbers=TRUE
+                                              , stopwords=TRUE
+                                              , removePunctuation=TRUE
+                                              , stemming=TRUE))
 lapply(sms_corpus[1:3], as.character)
 
