@@ -69,5 +69,5 @@ learn_set  <- apply(learn_set
                    , MARGIN=2
                    , conv_to_bow)
 
-length(test_set)
-length(learn_set)
+#length(test_set)
+#length(learn_set)
