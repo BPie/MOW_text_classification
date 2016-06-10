@@ -6,6 +6,7 @@ library("gmodels")
 
 myNaiveBayes  <- function(data, types, smoothing=0)
 {
+  
     types_lvls  <- levels(types)
     # assumption, that we learn for the first class 
     # (and all the rest)
@@ -44,12 +45,61 @@ myNaiveBayes  <- function(data, types, smoothing=0)
                                   ifelse(temp_v>0, temp_v, smoothing)  
                                 })
     }
-        print(head(likelihood))
+    model = structure(list(likelihood=likelihood
+                           , priors=priors)
+                      , class="myNaiveBayes")
+    return(model)
 }
 
-predict.myNaiveBayes  <- function(modelObject) 
+predict.myNaiveBayes  <- function(model, newdata)
 {
+    prob <- data.frame(matrix(ncol=NROW(newdata)
+                              , nrow=NROW(model$priors)))
     
+    row.names(prob) <- row.names(model$priors)
+    
+    # function that returns prod of probabilities
+    # f_temp <- function(ind,isArg)
+    # {
+    #     tempInd <- which(c[1,]==isArg)
+        
+    #     if(length(temp) == 0) {
+    #         return(1)
+    #     } else if(isArg=="Yes") {
+    #         return(prod(a2[ind,temp]))
+    #     } else {
+    #         return(prod(1-a2[ind,temp]))
+    #     }
+    # }
+    
+    for(new_sample in 1:NROW(newdata)) {
+        for(t in row.names(model$priors)) {
+            p = model$likelihood[t,]
+            pp = model$likelihood
+            pr = model$priors[t,]
+            sample = newdata[new_sample,]
+            
+            yes_idx = which(sample=="Yes")
+            no_idx = which(sample=="No")
+            
+            yes_val = ifelse(length(yes_idx) > 0
+                             , prod(p[yes_idx])
+                             , 1)
+            no_val = ifelse(length(no_idx) > 0
+                            , prod(1-as.numeric(p[no_idx]))
+                            , 1)
+            v = yes_val*no_val
+            prob[t, new_sample] <- v*model$priors[t,1]
+        }    
+    }
+    return(apply(prob,2,which.max))
 }
-myNaiveBayes(learn_set, learn_types, 0.000001)
+# learning
+mod = myNaiveBayes(learn_set
+                   , learn_types
+                   , 0.0001)
+# predicting
+pred <- predict(mod
+                , test_set)
+
 
