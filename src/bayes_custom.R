@@ -58,24 +58,9 @@ predict.myNaiveBayes  <- function(model, newdata)
     
     row.names(prob) <- row.names(model$priors)
     
-    # function that returns prod of probabilities
-    # f_temp <- function(ind,isArg)
-    # {
-    #     tempInd <- which(c[1,]==isArg)
-        
-    #     if(length(temp) == 0) {
-    #         return(1)
-    #     } else if(isArg=="Yes") {
-    #         return(prod(a2[ind,temp]))
-    #     } else {
-    #         return(prod(1-a2[ind,temp]))
-    #     }
-    # }
-    
     for(new_sample in 1:NROW(newdata)) {
         for(t in row.names(model$priors)) {
             p = model$likelihood[t,]
-            pp = model$likelihood
             pr = model$priors[t,]
             sample = newdata[new_sample,]
             
@@ -92,7 +77,6 @@ predict.myNaiveBayes  <- function(model, newdata)
             prob[t, new_sample] <- v*model$priors[t,1]
         }    
     }
-    #return(rownames(prob)[max(prob,ties.method="first")])
     return(rownames(prob)[apply(prob,2,which.max)])
 }
 # learning
