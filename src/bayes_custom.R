@@ -92,7 +92,8 @@ predict.myNaiveBayes  <- function(model, newdata)
             prob[t, new_sample] <- v*model$priors[t,1]
         }    
     }
-    return(apply(prob,2,which.max))
+    #return(rownames(prob)[max(prob,ties.method="first")])
+    return(rownames(prob)[apply(prob,2,which.max)])
 }
 # learning
 mod = myNaiveBayes(learn_set
@@ -101,5 +102,12 @@ mod = myNaiveBayes(learn_set
 # predicting
 pred <- predict(mod
                 , test_set)
+
+# evaluation
+CrossTable(pred
+           , test_types
+           , prop.chisq=FALSE
+           , prop.t=FALSE
+           , dnn=c('predicted','actual'))
 
 
