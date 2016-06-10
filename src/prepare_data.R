@@ -58,3 +58,16 @@ frequent_words_count  <- length(frequent_words)
 # narrowing dtm sets
 test_set  <- test_set[,frequent_words]
 learn_set  <- learn_set[,frequent_words]
+
+# convert to bag of words
+conv_to_bow <- function(inp) inp <- ifelse(inp > 0, 1,0);
+test_set  <- apply(test_set
+                   , MARGIN=2
+                   , conv_to_bow)
+
+learn_set  <- apply(learn_set
+                   , MARGIN=2
+                   , conv_to_bow)
+
+length(test_set)
+length(learn_set)
