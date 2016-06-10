@@ -34,14 +34,22 @@ myNaiveBayes  <- function(data, types, smoothing=0)
         priors[t, "prior"]  <- types_summary[t]/data_len
     
         # setting approx. likelihood
-        
+        temp_type_data = learn_set[learn_types==t,]
+        temp_count = NROW(temp_type_data)
+        likelihood[t,] <- apply(temp_type_data
+                                , 2
+                                , function(x)
+                                {
+                                  temp_v = length(which(x=="Yes"))/temp_count
+                                  ifelse(temp_v>0, temp_v, smoothing)  
+                                })
     }
-    print(priors)
+        print(head(likelihood))
 }
 
 predict.myNaiveBayes  <- function(modelObject) 
 {
     
 }
-myNaiveBayes(learn_set, learn_types)
+myNaiveBayes(learn_set, learn_types, 0.000001)
 
