@@ -41,7 +41,7 @@ test_set_count  <- ceiling(set_count * TEST_SET_PART)
 learn_set_count  <- set_count - test_set_count
 
 test_idxs  <- 1:test_set_count
-learn_idxs  <-  (test_set_count+1):(set_count)
+learn_idxs  <- (test_set_count+1):(set_count)
 
 test_set  <- sms_dtm[test_idxs,]
 learn_set  <- sms_dtm[learn_idxs,]
@@ -68,6 +68,3 @@ test_set  <- apply(test_set
 learn_set  <- apply(learn_set
                    , MARGIN=2
                    , conv_to_bow)
-
-#length(test_set)
-#length(learn_set)

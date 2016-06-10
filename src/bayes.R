@@ -21,4 +21,3 @@ CrossTable(prediction_sms
            , prop.chisq=FALSE
            , prop.t=FALSE
            , dnn=c('predicted','actual'))
-                              
