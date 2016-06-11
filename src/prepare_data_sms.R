@@ -4,12 +4,12 @@ library(SnowballC)
 
 # setting paths
 path_project <-  ".."
-path_data_root  <- paste(path_project,"datasets", sep="/")
+path_data_root <- paste(path_project,"datasets", sep="/")
 path_data_sms <- paste(path_data_root, "sms.csv", sep="/")
 
 # setting consts
-TEST_SET_PART  <- 0.2
-WORD_MIN_FREQ  <- 0.001
+TEST_SET_PART <- 0.2
+WORD_MIN_FREQ <- 0.001
 
 # reading data
 sms_raw <- read.table(path_data_sms
@@ -19,16 +19,16 @@ sms_raw <- read.table(path_data_sms
                      , header=FALSE)
 
 # setting column names
-colnames(sms_raw)  <- c("type", "message")
+colnames(sms_raw) <- c("type", "message")
 
 # setting factors
-sms_raw$type  <- factor(sms_raw$type)
+sms_raw$type <- factor(sms_raw$type)
 
 # creating corpus
-sms_corpus  <- VCorpus(VectorSource(sms_raw$message))
+sms_corpus <- VCorpus(VectorSource(sms_raw$message))
 
 # tokenizaition and corpus cleaning
-sms_dtm  <- DocumentTermMatrix(sms_corpus,
+sms_dtm <- DocumentTermMatrix(sms_corpus,
                                control = list(tolower=TRUE
                                               , removeNumbers=TRUE
                                               , stopwords=TRUE
@@ -37,14 +37,14 @@ sms_dtm  <- DocumentTermMatrix(sms_corpus,
 
 # splitting data
 set_count <- NROW(sms_dtm)
-test_set_count  <- ceiling(set_count * TEST_SET_PART)
-learn_set_count  <- set_count - test_set_count
+test_set_count <- ceiling(set_count * TEST_SET_PART)
+learn_set_count <- set_count - test_set_count
 
-test_idxs  <- 1:test_set_count
-learn_idxs  <- (test_set_count+1):(set_count)
+test_idxs <- 1:test_set_count
+learn_idxs <- (test_set_count+1):(set_count)
 
-test_set  <- sms_dtm[test_idxs,]
-learn_set  <- sms_dtm[learn_idxs,]
+test_set <- sms_dtm[test_idxs,]
+learn_set <- sms_dtm[learn_idxs,]
 
 test_types <- sms_raw[test_idxs,]$type
 learn_types <- sms_raw[learn_idxs,]$type
