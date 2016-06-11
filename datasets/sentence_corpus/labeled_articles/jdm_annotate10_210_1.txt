@@ -1,5 +1,5 @@
 OWNX	this study was designed to assess sex-related differences in the selection of an appropriate strategy when facing novelty
-OWNXXTEMPX a simple visuo-spatial task was used to investigate exploratory behavior as a specific response to novelty
+OWNX	a simple visuo-spatial task was used to investigate exploratory behavior as a specific response to novelty
 OWNX	the exploration task was followed by a visual discrimination task  and the responses were analyzed using signal detection theory
 OWNX	during exploration women selected a local searching strategy in which the metric distance between what is already known and what is unknown was reduced  whereas men adopted a global strategy based on an approximately uniform distribution of choices
 OWNX	women's exploratory behavior gives rise to a notion of a secure base warranting a sense of safety while men's behavior does not appear to be influenced by risk

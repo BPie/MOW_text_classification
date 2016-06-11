@@ -13,9 +13,19 @@ path_articles  <- paste(path_data_sentences, "labeled_articles", sep="/")
 TEST_SET_PART  <- 0.2
 WORD_MIN_FREQ  <- 0.001
 
+# getting filenames
 path_all_articles <- list.files(path=path_articles, pattern="*.txt")
-print(path_all_articles)
+path_all_articles <- paste(path_articles, path_all_articles, sep="/")
 
+# readding files
+message("reading all the files...")
+
+all_articles  <- lapply(path_all_articles
+                        , read.table
+                        , quote=""
+                        , sep="\t"
+                        , stringsAsFactors=FALSE
+                        , header=FALSE)
 
 
 # reading data
