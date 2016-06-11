@@ -1,10 +1,8 @@
-### abstract ###
 MISC	previous research on anchoring has shown this heuristic to be a very robust psychological phenomenon ubiquitous across many domains of human judgment and decision-making.
 MISC	despite the prevalence of anchoring effects  researchers have only recently begun to investigate the underlying factors responsible for how and in what ways a person is susceptible to them.
 AIMX	this paper examines how one such factor  the big-five personality trait of openness-to-experience  influences the effect of previously presented anchors on participants' judgments.
 OWNX	our findings indicate that participants high in openness-to-experience were significantly more influenced by anchoring cues relative to participants low in this trait.
 OWNX	these findings were consistent across two different types of anchoring tasks providing convergent evidence for our hypothesis
-### introduction ###
 MISC	the anchoring effect  CITATION  refers to the adjustment of one's assessment  higher or lower  based upon previously presented external information or an  anchor. 
 MISC	the anchoring heuristic appears to be prevalent throughout human decision processes and has been shown to reliably influence judgments in a variety of domains including probability estimates  CITATION   negotiation  CITATION   legal judgments  CITATION   and general knowledge  CITATION.
 MISC	further  anchoring effects appear viable across most situations for both novices and experts  CITATION  and seem to be effective under conditions of monetary incentives  CITATION  and in real-world settings  CITATION.

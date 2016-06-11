@@ -1,10 +1,8 @@
-### abstract ###
 AIMX	we test in the context of a dictator game the proposition that individuals may experience a self-control conflict between the temptation to act selfishly and the better judgment to act pro-socially
 OWNX	we manipulated the likelihood that individuals would identify self-control conflict, and we measured their trait ability to implement self-control strategies
 OWNX	our analysis reveals a positive and significant correlation between trait self-control and pro-social behavior in the treatment where we expected a relatively high likelihood of conflict identification-but not in the treatment where we expected a low likelihood
 OWNX	the magnitude of the effect is of economic significance
 OWNX	we conclude that subtle cues might prove sufficient to alter individuals' perception of allocation opportunities, thereby prompting individuals to draw on their own cognitive resources to act pro-socially
-### introduction ###
 MISC	lured by temptation, individuals may find themselves acting against their better judgment
 MISC	self-control failure, famously termed akrasia in plato's protagoras  CITATION , persists throughout domains of daily life and represents a central issue of both philosophy and modern-day social sciences
 MISC	for example, the dieter faced with the opportunity to indulge in a delicious creamy cake may perceive a conflict between indulging and maintaining a good figure

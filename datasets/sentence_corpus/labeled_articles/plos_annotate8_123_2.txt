@@ -1,4 +1,3 @@
-### abstract ###
 MISC	Alternative splicing contributes to both gene regulation and protein diversity.
 AIMX	To discover broad relationships between regulation of alternative splicing and sequence conservation, we applied a systems approach, using oligonucleotide microarrays designed to capture splicing information across the mouse genome.
 OWNX	In a set of 22 adult tissues, we observe differential expression of RNA containing at least two alternative splice junctions for about 40 percent of the 6,216 alternative events we could detect.
@@ -8,7 +7,6 @@ OWNX	By focusing on sets of exons with similar regulatory patterns, we have iden
 OWNX	Of note is a motif that is strikingly similar to the branchpoint consensus but is located downstream of the 5 splice site of exons included in muscle.
 OWNX	Analysis of three paralogous membrane-associated guanylate kinase genes reveals that each contains a paralogous tissue-regulated exon with a similar tissue inclusion pattern.
 OWNX	While the intron sequences flanking these exons remain highly conserved among mammalian orthologs, the paralogous flanking intron sequences have diverged considerably, suggesting unusually complex evolution of the regulation of alternative splicing in multigene families.
-### introduction ###
 MISC	Splicing is an essential process that constructs protein coding messenger RNA sequences using tiny segments of information buried in the much larger primary transcripts of the eukaryotic gene.
 MISC	Regulated alternative splicing can create different protein coding sequences under different biological circumstances, allowing the production of functionally related but distinct proteins.
 MISC	In addition, alternative splicing can mediate the repression of gene expression by stimulating the formation of transcripts subject to nonsense-mediated decay CITATION CITATION.

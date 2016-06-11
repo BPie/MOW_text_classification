@@ -1,4 +1,3 @@
-### abstract ###
 MISC	Metabolic network reconstructions represent valuable scaffolds for -omics data integration and are used to computationally interrogate network properties.
 MISC	However, they do not explicitly account for the synthesis of macromolecules.
 OWNX	Here, we present the first genome-scale, fine-grained reconstruction of Escherichia coli's transcriptional and translational machinery, which produces 423 functional gene products in a sequence-specific manner and accounts for all necessary chemical transformations.
@@ -9,7 +8,6 @@ OWNX	For example, the model predicted accurately the ribosome production, withou
 OWNX	Also, in silico rRNA operon deletion suggested that a high RNA polymerase density on the remaining rRNA operons is needed to reproduce the reported experimental ribosome numbers.
 OWNX	Moreover, functional protein modules were determined, and many were found to contain gene products from multiple subsystems, highlighting the functional interaction of these proteins.
 OWNX	This genome-scale reconstruction of E. coli's transcriptional and translational machinery presents a milestone in systems biology because it will enable quantitative integration of -omics datasets and thus the study of the mechanistic principles underlying the genotype phenotype relationship.
-### introduction ###
 MISC	High-throughput experimental technologies enable the production of heterogeneous data, such as expression profiles and proteomic data, for almost any organism of interest.
 MISC	A detailed mathematical representation of the in vivo cellular network is required to obtain a holistic understanding of cellular processes from these data sets and to quantitatively integrate them into a biological context.
 MISC	One such approach is the bottom-up network reconstruction, which builds manually networks in a brick-by-brick manner using genome annotation and component-specific information CITATION, CITATION.

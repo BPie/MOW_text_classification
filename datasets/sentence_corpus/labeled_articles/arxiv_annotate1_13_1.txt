@@ -1,11 +1,9 @@
-### abstract ###
 MISC	although the internet as level topology has been extensively studied over the past few years  little is known about the details of the as taxonomy
 MISC	an as  node  can represent a wide variety of organizations  e g   large isp  or small private business  university  with vastly different network characteristics  external connectivity patterns  network growth tendencies  and other properties that we can hardly neglect while working on veracious internet representations in simulation environments
 AIMX	in this paper  we introduce a radically new approach based on machine learning techniques to map all the ases in the internet into a natural as taxonomy
 OWNX	we successfully classify  NUMBER   NUMBER  percent  of ases with expected accuracy of  NUMBER   NUMBER  percent 
 OWNX	we release to the community the as level topology dataset augmented with   NUMBER   the as taxonomy information and  NUMBER   the set of as attributes we used to classify ases
 OWNX	we believe that this dataset will serve as an invaluable addition to further understanding of the structure and evolution of the internet
-### introduction ###
 MISC	the rapid expansion of the internet in the last two decades has produced a large scale system of thousands of diverse  independently managed networks that collectively provide global connectivity across a wide spectrum of geopolitical environments
 MISC	from  NUMBER  to  NUMBER  the number of globally routable as identifiers has increased from less than  NUMBER   NUMBER  to more than  NUMBER   NUMBER   exerting significant pressure on interdomain routing as well as other functional and structural parts of the internet
 MISC	this impressive growth has resulted in a heterogenous and highly complex system that challenges accurate and realistic modeling of the internet infrastructure

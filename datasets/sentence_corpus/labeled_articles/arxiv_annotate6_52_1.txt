@@ -1,4 +1,3 @@
-### abstract ###
 AIMX	we introduce a new principle for model selection in regression and classification
 MISC	many regression models are controlled by some smoothness or flexibility or complexity parameter    e g   the number of neighbors to be averaged over in k nearest neighbor  knn  regression or the polynomial degree in regression with polynomials
 OWNX	let   be the  best  regressor of complexity   on data
@@ -9,7 +8,6 @@ OWNX	we suggest selecting the model complexity   that has minimal loss rank  lor
 MISC	unlike most penalized maximum likelihood variants  aic bic mdl   lorp only depends on the regression functions and the loss function
 MISC	it works without a stochastic noise model  and is directly applicable to any non parametric regressor  like knn
 AIMX	in this paper we formalize  discuss  and motivate lorp  study it for specific regression problems  in particular linear ones  and compare it to other model selection schemes
-### introduction ###
 OWNX	consider a regression or classification problem in which we want to determine the functional relationship   from data    i e   we seek a function   such that   is close to the unknown   for all
 MISC	one may define regressor   directly  e g    average the   values of the   nearest neighbors  knn  of   in     or select the   from a class of functions   that has smallest  training  error on
 MISC	if the class   is not too large  e g the polynomials of fixed reasonable degree    this often works well

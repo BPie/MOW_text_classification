@@ -1,8 +1,6 @@
-### abstract ###
 AIMX	We propose a nonparametric Bayesian factor regression model that accounts for uncertainty in the number of factors, and the relationship between factors
 OWNX	To accomplish this, we propose a sparse variant of the Indian Buffet Process and couple this with a hierarchical model over factors, based on Kingman's coalescent
 OWNX	We apply this model to two problems (factor analysis and factor regression) in gene-expression data analysis
-### introduction ###
 MISC	Factor analysis is the task of explaining data by means of a set of  latent factors
 MISC	Factor  regression  couples this analysis with a prediction task, where the predictions are made solely on the basis of the factor representation
 MISC	The latent factor representation achieves two-fold benefits: (1) discovering the latent  process  underlying the data; (2) simpler predictive modeling through a compact data representation

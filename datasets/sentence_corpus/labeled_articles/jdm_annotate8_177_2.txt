@@ -1,11 +1,9 @@
-### abstract ###
 MISC	when judging their likelihood of success in competitive tasks, people tend to be overoptimistic for easy tasks and overpessimistic for hard tasks the shared circumstance effect; sce
 MISC	previous research has shown that feedback and experience from repeated-play competitions has a limited impact on sces
 AIMX	however, in this paper, we suggest that competitive situations, in which the shared difficulty or easiness of the task is more transparent, will be more amenable to debiasing via repeated play
 OWNX	pairs of participants competed in, made predictions about, and received feedback on, multiple rounds of a throwing task involving both easy- and hard-to-aim objects
 OWNX	participants initially showed robust sces, but they also showed a significant reduction in bias after only one round of feedback
 OWNX	these and other results support a more positive view than suggested from past research on the potential for sces to be debiased through outcome feedback
-### introduction ###
 MISC	competition abounds in everyday life, where we contend with others for top grades, jobs, trophies, and mates
 MISC	when resources are at a premium, it is optimal to enter into competitive environments in which we are certain to fare well and to avoid those in which we are doomed to fail
 MISC	however, when people evaluate their likelihood of success in competitions, they are subject to a robust bias: a competitor should consider the strengths and weaknesses of the self and the other competitors  CITATION , but people often give too much weight to evidence related to their own strengths and weaknesses and too little weight to such evidence about the competitor  CITATION

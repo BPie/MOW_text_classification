@@ -1,10 +1,8 @@
-### abstract ###
 BASE	this paper extends previous research showing that experienced difficulty of recall can influence evaluative judgments CITATION to a field study of university students rating a course
 AIMX	students completed a mid-course evaluation form in which they were asked to list either  NUMBER  ways in which the course could be improved a relatively easy task or  NUMBER  ways in which the course could be improved a relatively difficult task
 OWNX	respondents who had been asked for  NUMBER  critical comments subsequently rated the course more favorably than respondents who had been asked for  NUMBER  critical comments
 OWNX	an internal analysis suggests that the number of critiques solicited provides a frame against which accessibility of instances is evaluated
 OWNX	the paper concludes with a discussion of implications of the present results and possible directions for future research
-### introduction ###
 MISC	according to tversky and kahneman's  CITATION  availability heuristic  people sometimes judge the frequency of events in the world by the ease with which examples come to mind
 MISC	this process has generally been demonstrated by asking participants to assess the relative likelihood of two categories in which instances of the first category are more difficult to recall than instances of the second category  despite the fact that instances of the first category are more common in the world
 MISC	for instance  kahneman and tversky  CITATION  found that most people think the letter r more often appears in english words as the first letter than the third letter  presumably because the first letter provides a better cue for recalling instances of words than does the third letter

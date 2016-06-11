@@ -1,4 +1,3 @@
-### abstract ###
 MISC	third-party punishment has recently received attention as an explanation for human altruism
 CONT	feelings of anger in response to norm violations are assumed to motivate third-party sanctions, yet there is only sparse and indirect support for this idea
 OWNX	we investigated the impact of both anger and guilt feelings on third-party sanctions
@@ -6,7 +5,6 @@ OWNX	in two studies both emotions were independently manipulated
 OWNX	results show that anger and guilt independently constitute sufficient but not necessary causes of punishment
 OWNX	low levels of punishment are observed only when neither emotion is elicited
 AIMX	we discuss the implications of these findings for the functions of altruistic sanctions
-### introduction ###
 MISC	people often defend the interests of others
 MISC	they stand up for their friends if someone speaks ill about them in their absence
 MISC	they do not tolerate a colleague being bullied at work

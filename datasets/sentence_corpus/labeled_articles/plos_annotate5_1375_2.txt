@@ -1,4 +1,3 @@
-### abstract ###
 MISC	The firing rate of single neurons in the mammalian hippocampus has been demonstrated to encode for a range of spatial and non-spatial stimuli.
 MISC	It has also been demonstrated that phase of firing, with respect to the theta oscillation that dominates the hippocampal EEG during stereotype learning behaviour, correlates with an animal's spatial location.
 MISC	These findings have led to the hypothesis that the hippocampus operates using a dual coding system.
@@ -6,7 +5,6 @@ OWNX	To investigate the phenomenon of dual coding in the hippocampus, we examine
 AIMX	We demonstrate that this plasticity rule can generate both symmetric and asymmetric connections between neurons that fire at concurrent or successive theta phase, respectively, and subsequently produce both pattern completion and sequence prediction from partial cues.
 BASE	This unifies previously disparate auto- and hetero-associative network models of hippocampal function and provides them with a firmer basis in modern neurobiology.
 OWNX	Furthermore, the encoding and reactivation of activity in mutually exciting Hebbian cell assemblies demonstrated here is believed to represent a fundamental mechanism of cognitive processing in the brain.
-### introduction ###
 MISC	The hippocampus and surrounding medial temporal lobe are implicated in declarative memory function in humans and other mammals CITATION.
 MISC	Electrophysiology studies in a range of species have demonstrated that the activity of single pyramidal cells within this region can encode for the presence of both spatial and non-spatial stimuli CITATION.
 MISC	The majority of empirical investigation has focussed on place cells neurons whose firing rate is directly correlated with an animal's spatial location within the corresponding place field CITATION.

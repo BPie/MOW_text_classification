@@ -1,10 +1,8 @@
-### abstract ###
 MISC	Regularized risk minimization with the binary hinge loss and its variants lies at the heart of many machine learning problems
 MISC	Bundle methods for regularized risk minimization (BMRM) and the closely related SVMStruct are considered the best general purpose solvers to tackle this problem
 MISC	It was recently shown that BMRM requires  SYMBOL  iterations to converge to an  SYMBOL  accurate solution
 AIMX	In the first part of the paper we use the Hadamard matrix to construct a regularized risk minimization problem and show that these rates cannot be improved
 OWNX	We then show how one can exploit the structure of the objective function to devise an algorithm for the binary hinge loss which converges to an  SYMBOL  accurate solution in  SYMBOL  iterations
-### introduction ###
 MISC	Let  SYMBOL  denote samples and  SYMBOL  be the corresponding labels
 MISC	Given a training set of  SYMBOL  sample label pairs  SYMBOL , drawn i i d from a joint probability distribution on  SYMBOL , many machine learning algorithms solve the following regularized risk minimization problem:     
 MISC	Here  SYMBOL  denotes the loss on instance  SYMBOL  using the current model  SYMBOL  and  SYMBOL , the empirical risk, is the average loss on the training set

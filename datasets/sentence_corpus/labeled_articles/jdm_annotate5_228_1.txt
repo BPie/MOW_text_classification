@@ -1,4 +1,3 @@
-### abstract ###
 MISC	previous tests of cumulative prospect theory cpt and of the priority heuristic ph found evidence contradicting these two models of risky decision making.
 CONT	however, those tests were criticized because they had characteristics that might "trigger" use of other heuristics.
 AIMX	this paper presents new tests that avoid those characteristics.
@@ -9,7 +8,6 @@ OWNX	results contradict the ph, even when ph is modified to include a preliminar
 OWNX	new tests of probability-consequence interaction were also conducted
 OWNX	strong interactions were observed, contrary to ph
 OWNX	these results add to the growing bodies of evidence showing that neither cpt nor ph is an accurate description of risky decision making
-### introduction ###
 AIMX	this paper compares three models that attempt to describe risky decision making
 AIMX	these models are cumulative prospect theory cpt  CITATION , birnbaum's  CITATION  transfer of attention exchange model tax, and the priority heuristic ph of brandstatter, gigerenzer, and hertwig  CITATION
 MISC	the ph model is based on the idea that people compare one attribute at a time, such as the minimum prizes

@@ -1,10 +1,8 @@
-### abstract ###
 MISC	The influence of lipid molecules on the aggregation of a highly amyloidogenic segment of human islet amyloid polypeptide, hIAPP20 29, and the corresponding sequence from rat has been studied by all-atom replica exchange molecular dynamics simulations with explicit solvent model.
 MISC	hIAPP20 29 fragments aggregate into partially ordered -sheet oligomers and then undergo large conformational reorganization and convert into parallel/antiparallel -sheet oligomers in mixed in-register and out-of-register patterns.
 MISC	The hydrophobic interaction between lipid tails and residues at positions 23 25 is found to stabilize the ordered -sheet structure, indicating a catalysis role of lipid molecules in hIAPP20 29 self-assembly.
 MISC	The rat IAPP variants with three proline residues maintain unstructured micelle-like oligomers, which is consistent with non-amyloidogenic behavior observed in experimental studies.
 AIMX	Our study provides the atomic resolution descriptions of the catalytic function of lipid molecules on the aggregation of IAPP peptides.
-### introduction ###
 MISC	A range of human diseases including Alzheimer's disease, Parkinson's disease, the spongiform encephalopathy and type 2 diabetes mellitus is associated with amyloid deposits of normally soluble proteins or peptides CITATION CITATION.
 MISC	In T2DM, the main protein component of fibrillar protein deposits in the pancreatic islets of langerhans has been identified as a 37-residue hormone referred to as islet amyloid polypeptide or amylin CITATION, which is synthesized in -cells of the pancreas and cosecreted with insulin CITATION, CITATION.
 MISC	There are convincing evidences that the toxicity of amyloid related diseases may be caused by the soluble intermediate oligomers instead of mature fibrils CITATION CITATION, and the interaction between lipid bilayer and these soluble oligomer CITATION CITATION.

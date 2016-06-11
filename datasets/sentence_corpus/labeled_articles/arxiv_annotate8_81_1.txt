@@ -1,4 +1,3 @@
-### abstract ###
 MISC	in the constraint satisfaction problem      the aim is to find an assignment of values to a set of variables subject to specified constraints
 MISC	in the minimum cost homomorphism problem      one is additionally given weights   for every variable   and value    and the aim is to find an assignment   to the variables that minimizes
 MISC	let   denote the   problem parameterized by the set of predicates allowed for constraints
@@ -6,7 +5,6 @@ MISC	is related to many well studied combinatorial optimization problems  and co
 AIMX	we show that   can be studied by using algebraic methods similar to those used for csps
 OWNX	with the aid of algebraic techniques  we classify the computational complexity of   for all choices of
 CONT	our result settles a general dichotomy conjecture previously resolved only for certain classes of directed graphs   gutin  hell  rafiey  yeo  european j of combinatorics   NUMBER  
-### introduction ###
 MISC	constraint satisfaction problems     are a natural way of formalizing a large number of computational problems arising in combinatorial optimization  artificial intelligence  and database theory
 MISC	this problem has the following two equivalent formulations    NUMBER   to find an assignment of values to a given set of variables  subject to constraints on the values that can be assigned simultaneously to specified subsets of variables  and   NUMBER   to find a homomorphism between two finite relational structures   and
 MISC	applications of  s arise in the propositional logic  database and graph theory  scheduling and many other areas

@@ -1,4 +1,3 @@
-### abstract ###
 CONT	most generalization bounds in learning theory are based on some measure of the complexity of the hypothesis class used  independently of any algorithm
 CONT	in contrast  the notion of algorithmic stability can be used to derive tight generalization bounds that are tailored to specific learning algorithms by exploiting their particular properties
 CONT	however  as in much of learning theory  existing stability analyses and bounds apply only in the scenario where the samples are independently and identically distributed
@@ -9,7 +8,6 @@ OWNX	we prove novel and distinct stability based generalization bounds for stati
 BASE	these bounds strictly generalize the bounds given in the independent and identically distributed   case and apply to all stable learning algorithms  thereby extending the use of stability bounds to non independent and identically distributed   scenarios
 OWNX	we also illustrate the application of our   mixing generalization bounds to general classes of learning algorithms  including support vector regression  kernel ridge regression  and support vector machines  and many other kernel regularization based and relative entropy based regularization algorithms
 OWNX	these novel bounds can thus be viewed as the first theoretical basis for the use of these algorithms in non independent and identically distributed   scenarios   
-### introduction ###
 CONT	most generalization bounds in learning theory are based on some measure of the complexity of the hypothesis class used  such as the vc dimension  covering numbers  or rademacher complexity
 CONT	these measures characterize a class of hypotheses  independently of any algorithm
 CONT	in contrast  the notion of algorithmic stability can be used to derive bounds that are tailored to specific learning algorithms and exploit their particular properties

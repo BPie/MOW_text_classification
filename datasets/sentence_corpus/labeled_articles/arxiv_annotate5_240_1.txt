@@ -1,9 +1,7 @@
-### abstract ###
 AIMX	this paper studies quantum annealing  qa  for clustering  which can be seen as an extension of simulated annealing  sa 
 OWNX	we derive a qa algorithm for clustering and propose an annealing schedule  which is crucial in practice
 CONT	experiments show the proposed qa algorithm finds better clustering assignments than sa
 CONT	furthermore  qa is as easy as sa to implement
-### introduction ###
 MISC	clustering is one of the most popular methods in data mining
 MISC	typically  clustering problems are formulated as optimization problems  which are solved by algorithms  for example the em algorithm or convex relaxation
 MISC	however  clustering is typically np hard
@@ -19,7 +17,7 @@ MISC	a derived qa algorithm depends on the definition of quantum effect
 OWNX	we propose quantum effect    which leads to a search strategy fit to clustering
 AIMX	our contribution is 1) to propose a qa based optimization algorithm for clustering in particular quantum effect for clustering and a good annealing schedule  which is crucial for applications 2) and to experimentally show the proposed algorithm optimizes clustering assignments better than sa
 OWNX	we also show the proposed algorithm is as easy as sa to implement 
-OWNX 	the algorithm we propose is a markov chain monte carlo  mcmc  sampler  which we call qa st sampler
+OWNX		the algorithm we propose is a markov chain monte carlo  mcmc  sampler  which we call qa st sampler
 OWNX	as we explain later  a naive qa sampler is intractable even with mcmc
 OWNX	thus  we approximate qa by the suzuki trotter  st  expansion  CITATION  to derive a tractable sampler  which is the qa st sampler
 OWNX	qa st looks like parallel   sas with interaction    see fig  

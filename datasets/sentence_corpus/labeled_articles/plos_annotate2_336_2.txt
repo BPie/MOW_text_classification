@@ -1,11 +1,9 @@
-### abstract ###
 MISC	The tradeoff between the need to suppress drug-resistant viruses and the problem of treatment toxicity has led to the development of various drug-sparing HIV-1 treatment strategies.
 AIMX	Here we use a stochastic simulation model for viral dynamics to investigate how the timing and duration of the induction phase of induction maintenance therapies might be optimized.
 OWNX	Our model suggests that under a variety of biologically plausible conditions, 6 10 mo of induction therapy are needed to achieve durable suppression and maximize the probability of eradicating viruses resistant to the maintenance regimen.
 OWNX	For induction regimens of more limited duration, a delayed-induction or -intensification period initiated sometime after the start of maintenance therapy appears to be optimal.
 OWNX	The optimal delay length depends on the fitness of resistant viruses and the rate at which target-cell populations recover after therapy is initiated.
 OWNX	These observations have implications for both the timing and the kinds of drugs selected for induction maintenance and therapy-intensification strategies.
-### introduction ###
 MISC	The failure of antiretroviral therapies to completely suppress viral replication in some patients represents a major difficulty in the management of HIV infection.
 MISC	In therapy-naive patients without clinically apparent resistance mutations, triple-drug therapy with two nucleoside analog reverse transcriptase inhibitors and a protease inhibitor or a non-nucleoside reverse transcriptase inhibitor is standard CITATION.
 MISC	In these patients, treatment success rates, defined as viral load 50 copies/ml at 48 wk, range from 70 percent to 80 percent 85 percent.

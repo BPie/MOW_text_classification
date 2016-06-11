@@ -1,4 +1,3 @@
-### abstract ###
 MISC	Human Immunodeficiency Virus 1 uses for entry into host cells a receptor and one of two co-receptors.
 MISC	Recently, a new class of antiretroviral drugs has entered clinical practice that specifically bind to the co-receptor CCR5, and thus inhibit virus entry.
 MISC	Accurate prediction of the co-receptor used by the virus in the patient is important as it allows for personalized selection of effective drugs and prognosis of disease progression.
@@ -9,7 +8,6 @@ OWNX	The two-level method predicts usage of CXCR4 co-receptor for new V3 sequenc
 OWNX	Moreover, it is relatively robust against insertions and deletions, which frequently occur in V3.
 OWNX	The approach could help clinicians to find optimal personalized treatments, and it offers new insights into the molecular basis of co-receptor usage.
 OWNX	For instance, it quantifies the importance for co-receptor usage of a pocket that probably is responsible for binding sulfated tyrosine.
-### introduction ###
 MISC	Specific protein interactions are central to biological processes, and the infection of cells with viruses is no exception there.
 MISC	In the case of pathogenic viruses, such protein interactions are potential targets for medical intervention.
 MISC	An example of particularly high relevance is Human Immunodeficiency Virus 1.

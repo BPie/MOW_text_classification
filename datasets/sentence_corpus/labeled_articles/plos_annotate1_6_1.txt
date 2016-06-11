@@ -1,4 +1,3 @@
-### abstract ###
 MISC	Expansion of polyglutamine tracts in proteins results in protein aggregation and is associated with cell death in at least nine neurodegenerative diseases.
 MISC	Disease age of onset is correlated with the polyQ insert length above a critical value of 35 40 glutamines.
 MISC	The aggregation kinetics of isolated polyQ peptides in vitro also shows a similar critical-length dependence.
@@ -9,7 +8,6 @@ OWNX	In the -helices observed in simulations, all residues adopt -strand backbon
 OWNX	We also find that mutant polyQ peptides with proline-glycine inserts show formation of antiparallel -hairpins in their ground state, in agreement with experiments.
 OWNX	The lower stability of mutant -helices explains their lower aggregation rates compared to wild type.
 OWNX	Our results provide a molecular mechanism for polyQ-mediated aggregation.
-### introduction ###
 MISC	The appearance of polyglutamine -containing aggregates CITATION CITATION is a hallmark of disease progression in all diseases in which CAG-expansions occur in genes CITATION.
 MISC	Intranuclear inclusion bodies containing polyQ aggregates have been found in vitro CITATION, CITATION, in cell cultures, animal models, and affected patients CITATION, CITATION.
 MISC	The aggregates are known to have a characteristic amyloid topology CITATION.

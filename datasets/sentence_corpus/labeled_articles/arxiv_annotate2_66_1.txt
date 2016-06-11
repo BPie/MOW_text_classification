@@ -1,8 +1,6 @@
-### abstract ###
 AIMX	in this paper we derive the equations for loop corrected belief propagation on a continuous variable gaussian model
 OWNX	using the exactness of the averages for belief propagation for gaussian models  a  different way of obtaining the covariances is found   based on belief propagation on cavity graphs
 OWNX	we discuss the relation of this  loop correction algorithm to expectation propagation  algorithms for the case in which the model is no longer  gaussian  but slightly perturbed by nonlinear terms
-### introduction ###
 MISC	message passing techniques in graphical models allow for the computation of  approximate   marginal probabilities in a time interval scaling polynomially in the  model size
 MISC	their discovery has consequently revolutionized several  fields of applications in the past years  of which error correcting codes and vision are probably the most prominent examples
 MISC	in many cases  the corresponding graphs are loopy  implying either that the error resulting from the application of loopy belief propagation  bp  is negligible for the particular model  or it  can be tolerated for the particular purpose bp serves

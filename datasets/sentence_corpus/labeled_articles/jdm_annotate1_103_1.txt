@@ -1,8 +1,6 @@
-### abstract ###
 MISC	similar to research on risky choice, the traditional analysis of intertemporal choice takes the view that an individual behaves so as to maximize the discounted sum of all future utilities
 MISC	the well-known allais paradox contradicts the fundamental postulates of maximizing the expected value or utility of a risky option
 AIMX	we describe a violation of the law of diminishing marginal utility as well as an intertemporal version of the allais paradox
-### introduction ###
 MISC	in the field of intertemporal choice, the discounted-utility du theory proposed by paul samuelson in 1937 was presented not only as a valid normative standard but also as a descriptive theory of actual intertemporal choice behavior  CITATION
 MISC	in its general form, the du theory proposes that the value of an option, x; t, is the product of its present utility, ux, and an exponential temporal discounting function, ft, where t is the time at which x is acquired
 MISC	the overall value of a mixed option, a = {x, t, x, t, }, denoted va, is simply the sum of these products

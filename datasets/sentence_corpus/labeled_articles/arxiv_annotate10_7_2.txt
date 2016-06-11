@@ -1,4 +1,3 @@
-### abstract ###
 MISC	The Minimum Description Length principle for online sequence estimation/prediction in a proper learning setup is studied
 MISC	If the underlying model class is discrete, then the total expected square loss is a particularly interesting performance measure: (a) this quantity is finitely bounded, implying convergence with probability one, and (b) it additionally specifies the convergence speed
 MISC	For MDL, in general one can only have loss bounds which are finite but exponentially larger than those for Bayes mixtures
@@ -6,7 +5,6 @@ AIMX	We show that this is even the case if the model class contains only Bernoul
 OWNX	We derive a new upper bound on the prediction error for countable Bernoulli classes
 OWNX	This implies a small bound (comparable to the one for Bayes mixtures) for certain important model classes
 OWNX	We discuss the application to Machine Learning tasks such as classification and hypothesis testing, and generalization to countable classes of iid models
-### introduction ###
 MISC	``Bayes mixture", ``Solomonoff induction", ``marginalization", all these terms refer to a central induction principle: Obtain a predictive distribution by integrating the product of prior and evidence over the model class
 CONT	In many cases however, the Bayes mixture is computationally infeasible, and even a sophisticated approximation is expensive
 MISC	The MDL or MAP (maximum a posteriori) estimator is both a common approximation for the Bayes mixture and interesting for its own sake: Use the model with the largest product of prior and evidence

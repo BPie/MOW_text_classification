@@ -1,4 +1,3 @@
-### abstract ###
 MISC	Numerous psychophysical experiments found that humans preferably rely on a narrow band of spatial frequencies for recognition of face identity.
 OWNX	A recently conducted theoretical study by the author suggests that this frequency preference reflects an adaptation of the brain's face processing machinery to this specific stimulus class.
 OWNX	The purpose of the present study is to examine this property in greater detail and to specifically elucidate the implication of internal face features.
@@ -6,7 +5,6 @@ OWNX	To this end, I parameterized Gabor filters to match the spatial receptive f
 OWNX	Filter responses to a large number of face images were computed, aligned for internal face features, and response-equalized.
 OWNX	The results demonstrate that the frequency preference is caused by internal face features.
 OWNX	Thus, the psychophysically observed human frequency bias for face processing seems to be specifically caused by the intrinsic spatial frequency content of internal face features.
-### introduction ###
 MISC	In the brain, the structure of neuronal circuits for processing sensory information matches the statistical properties of the sensory signals CITATION.
 MISC	Taking advantage of these statistical regularities contributes to an optimal encoding of sensory signals in neuronal responses, in the sense that the code conveys the highest information with respect to specific constraints CITATION CITATION.
 MISC	Among the various constraints which were formulated we find, for example, keeping metabolic energy consumption as low as possible CITATION CITATION, or keeping total wiring length between processing units at a minimum CITATION, or maximizing the suppression of spatio-temporal redundancy in the input signal CITATION, CITATION CITATION .
