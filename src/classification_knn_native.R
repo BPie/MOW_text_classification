@@ -65,9 +65,13 @@ frequentWords  <- findFreqTerms(frequentDTM, (NCOL(frequentDF)-1)*WORD_MIN_FREQ)
 trainSet <- trainSet[,frequentWords]
 testSet <- testSet[,frequentWords]
 
+
+
 # Classifier
+knnpred <- knnCustom.predict(trainSet, testSet, cl, k=1)
 knnpred <- knn(trainSet, testSet, cl, k = 1, l = 0, prob = FALSE)
 
 # Confusion matrix
-confusionMat <- table(knn.pred, clTest)
+confusionMat <- table(knnpred, clTest)
 confusionMat
+

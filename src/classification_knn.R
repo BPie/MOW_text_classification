@@ -1,5 +1,5 @@
 
-knnCustom.predict(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weights = c(1,1)) <- {
+knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weights = c(1,1)) {
   # Predicts the kNN classifier output
   #
   # Args:
@@ -13,11 +13,9 @@ knnCustom.predict(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplu
   #
   # Returns:
   #   The kNN model of classifier
-  
   # Creating a model of a lazy classifier is useless and is only taking up the memory
   # So the model is not created
   # The prediction keeps its official form
-  
   distanceMatrix <- knnCustom.dist(trainSet, testSet, simMeasure)
   
   # Generate the voteList of all the closestNeighbours
@@ -41,46 +39,6 @@ knnCustom.predict(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplu
   knnCustom.predict <- class
 }
 
-knnCustom.predict <- function(distanceMatrix, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weights = c(1,1)) {
-  # Predicts the kNN classifier output
-  #
-  # Args:
-  #   distanceMatrix: Pre-calculated distance matrix, where ROWS: represent testingSet and 
-  #                   columns represent trainingSet
-  #   k: number of neighbours to obtains as voters for a class
-  #   simMeasure: 0: euclidean Distance, 1: cosine Dissimilarity
-  #   isKplus: if TRUE, knn+ is used
-  #   weights: constant weights for voting for a given class
-  #
-  # Returns:
-  #   The kNN model of classifier
-  
-  # Generate the voteList of all the closestNeighbours
-  voteLists <- apply(distanceMatrix, 1,function(x){
-    if(isKplus) 
-      orderKPlus(x, k) 
-    else
-      order(x)[1:k]
-  })
-  
-  # Weighted votes Vectors
-  voteLists <- sapply(voteLists,function(x){
-    singleVote(x, weights, trainClasses)
-  })
-  
-  # votes
-  class <- apply(voteLists, 2, function(x){
-    order(x)[-1]
-  })
-
-  knnCustom.predict <- class
-}
-
-
-
-
-knn.p <- knnCustom.predict(z,c,1)
-
 knnCustom.dist <- function(trainSet, testSet, simMeasure = 0) {
   # Computes the dissimilarity between two matrices
   #
@@ -95,12 +53,12 @@ knnCustom.dist <- function(trainSet, testSet, simMeasure = 0) {
   # For all the samples in a testing set and all the samples in a training
   # set, calculate distance
   
-  if(!is.matrix(trainSet) || !is.matrix(testSet))
-    error("TrainSet or TestSet are not matrices")
+  if(!is.data.frame(trainSet) || !is.data.frame(testSet))
+    stop ("TrainSet or TestSet are not matrices")
   else if(NCOL(trainSet)!=NCOL(testSet))
-        error("TrainSet and TestSet have different number of arguments")
-
-  distanceVector <- apply(trainSet, 1, function(x){
+    stop ("TrainSet and TestSet have different number of arguments")
+  
+  knnCustom.dist <- apply(trainSet, 1, function(x){
     apply(testSet,1, function(y){
       if(simMeasure == 0)
         calculateEuclidean(x,y)
@@ -110,6 +68,7 @@ knnCustom.dist <- function(trainSet, testSet, simMeasure = 0) {
   })
   
 }
+
 
 calculateEuclidean <- function(a,b){
   # Computes the euclidean dissimilarity (distance) between two vectors
@@ -122,9 +81,9 @@ calculateEuclidean <- function(a,b){
   #   The euclidean distance between vectors a and b (scalar)
   
   if(!is.vector(a) || !is.vector(b))
-    error("Input parameters must be one-dimensional arrays")
+    stop ("Input parameters must be one-dimensional arrays")
   else if(length(a)!=length(b))
-    error("Input vectors are of different lengths in calculateEudclidean function")
+    stop ("Input vectors are of different lengths in calculateEudclidean function")
   
   sum <- sum(mapply(function(x,y){(x-y)^2}, a, b))
 
