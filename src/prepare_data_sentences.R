@@ -17,7 +17,7 @@ WORD_MIN_FREQ  <- 0.001
 path_all_articles <- list.files(path=path_articles, pattern="*.txt")
 path_all_articles <- paste(path_articles, path_all_articles, sep="/")
 
-# readding files
+# readding data
 message("reading all the files...")
 
 all_articles  <- lapply(path_all_articles
@@ -26,6 +26,30 @@ all_articles  <- lapply(path_all_articles
                         , sep="\t"
                         , stringsAsFactors=FALSE
                         , header=FALSE)
+all_articles  <- Reduce(function(...) merge(..., all=TRUE), all_articles)
+
+# setting column names
+colnames(all_articles)  <- c("type", "message")
+
+# setting factors
+all_articles$type  <- factor(all_articles$type)
+
+# creating corpus
+articles_corpus  <-  VCorpus(VectorSource(all_articles$message))
+
+# loading stopwords
+stopwords  <- as.list(read.table(path_stopwords
+                                 , sep=" "
+                                 , header=FALSE)
+print(as.list(stopwords))
+
+# tokenization and corpus cleaning
+articles_dtm  <- DocumentTermMatrix(articles_corpus
+                                    , control = list(tolower=TRUE
+                                                     , removeNumbers=TRUE
+                                                     , stopwords=TRUE
+                                                     , removePunctuation=TRUE
+                                                     , stemming=TRUE))
 
 
 # reading data
