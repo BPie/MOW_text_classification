@@ -18,8 +18,6 @@ path_all_articles <- list.files(path=path_articles, pattern="*.txt")
 path_all_articles <- paste(path_articles, path_all_articles, sep="/")
 
 # readding data
-message("reading all the files...")
-
 all_articles  <- lapply(path_all_articles
                         , read.table
                         , quote=""
@@ -40,16 +38,28 @@ articles_corpus  <-  VCorpus(VectorSource(all_articles$message))
 # loading stopwords
 stopwords  <- as.list(read.table(path_stopwords
                                  , sep=" "
-                                 , header=FALSE)
-print(as.list(stopwords))
+                                 , header=FALSE))
 
-# tokenization and corpus cleaning
+articles_corpus <- tm_map(articles_corpus, content_transformer(tolower))
+if(!is.null(stopwords)) 
+{
+    articles_corpus <- tm_map(articles_corpus
+                              , removeWords 
+                              , words=as.character(stopwords))
+} else {
+    articles_corpus <- tm_map(articles_corpus, removeWords, stopwords())
+}
+articles_corpus <- tm_map(articles_corpus, removePunctuation)
+articles_corpus <- tm_map(articles_corpus, stemDocument)
+articles_corpus <- tm_map(articles_corpus, stripWhitespace)
+
+# tokenization 
 articles_dtm  <- DocumentTermMatrix(articles_corpus
-                                    , control = list(tolower=TRUE
-                                                     , removeNumbers=TRUE
-                                                     , stopwords=TRUE
-                                                     , removePunctuation=TRUE
-                                                     , stemming=TRUE))
+                                    , control = list(tolower=FALSE
+                                                     , removeNumbers=FALSE
+                                                     , stopwords=FALSE
+                                                     , removePunctuation=FALSE
+                                                     , stemming=FALSE))
 
 
 # reading data
