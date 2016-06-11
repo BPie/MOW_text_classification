@@ -13,7 +13,7 @@ MISC	in topology modeling  knowledge of as types is mandatory for augmenting syn
 MISC	for example  we expect the network of a dual homed university to be drastically different from that of a dual homed small company
 MISC	the university will likely contain dozens of internal routers  thousands of hosts  and many other network elements  switches  servers  firewalls 
 MISC	on the other hand  the small company will most probably have a single router and a simple network topology
-MISC	since there is such a diversity among different network types  we cannot accurately augment the as level topology with appropriate router level topologies if we cannot MISC	characterize the composing ases
+MISC	since there is such a diversity among different network types  we cannot accurately augment the as level topology with appropriate router level topologies if we cannot MIS characterize the composing ases
 MISC	moreover  annotating the ases in the as topology with their types is a prerequisite for modeling the evolution of the internet  since different types of ases exhibit different growth patterns
 MISC	for example  internet service providers  isp  grow by attracting new customers and by engaging in business agreements with other isps
 MISC	on the other hand  small companies that connect to the internet through one or few isps do not grow significantly over time
