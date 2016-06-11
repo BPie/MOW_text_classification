@@ -1,6 +1,6 @@
 if(!exists("learn_set")) 
 {
-    source("prepare_data.R")
+    source("prepare_data_sms.R")
 }
 library("gmodels")
 
