@@ -9,6 +9,11 @@ setwd("C:/Users/usr/Desktop/MOW_text_classification")
 # Date: 2015-06-08                       #
 # By: Rozalia Pietrzak                   #
 ##########################################
+# The functions to data_prep have been cp#
+# here for simplification and change of  #
+# the testing set. Please see data_prepr #
+# for reference                          #
+##########################################
 
 # setting consts
 TEST_SET_PART  <- 0.2
@@ -17,10 +22,10 @@ WORD_MIN_FREQ  <- 0.001
 
 # Read data
 mainDF <- read.csv("./datasets/sms.csv", 
-               sep ="\t", 
-               header = FALSE, 
-               stringsAsFactors = FALSE, 
-               quote = "")
+                   sep ="\t", 
+                   header = FALSE, 
+                   stringsAsFactors = FALSE, 
+                   quote = "")
 
 colnames(mainDF) <- c("class", "text")
 
@@ -41,37 +46,40 @@ corpus <- tm_map(corpus, removeWords, stopwords("english"))
 
 # Create DocumentTerm Frequency Matrix, with frequent, binary and TF-IDF
 frequentDTM <- DocumentTermMatrix(corpus)
-#binaryDTM <- DocumentTermMatrix(corpus, control = list(weighting =
-#                                                        function(x)
-#                                                        weightBin(x)))
-#tfidfDTM <- DocumentTermMatrix(corpus, control = list(weighting =
-#                                                         function(x)
-#                                                           weightTfIdf(x), normalization=FALSE))
-
-# Transform dtm to matrix to data frame - df is easier to work with
-frequentDF <- as.data.frame(data.matrix(frequentDTM))
-frequentDF <- cbind(frequentDF, mainDF$class)
 #binaryDF <- as.data.frame(data.matrix(binaryDTM))
 #tfidfDF <- as.data.frame(data.matrix(tfidfDTM))
 
-# For deterministic comparison, use split in half
-trainSet <- frequentDF[1:(NROW(frequentDF)*4/5-1),1:(NCOL(frequentDF)-1)]
-testSet <- frequentDF[(NROW(frequentDF)*4/5):(NROW(frequentDF)-1),1:(NCOL(frequentDF)-1)]
-cl <- frequentDF[1:(NROW(frequentDF)*4/5-1),NCOL(frequentDF)-1]
-clTest <-  frequentDF[(NROW(frequentDF)*4/5):(NROW(frequentDF)-1),NCOL(frequentDF)-1]
+# For deterministic comparison, use the same split as in data_prep
+# With no randomization. Use the 5X1/5 solution (testing set is 1/5
+# but in the next steps it is selected as a diff part of original data)
+testSetCount <- ceiling(nrow(frequentDTM) * TEST_SET_PART)
+trainSetCount <- nrow(frequentDTM) - testSetCount
 
-# finding frequent words
-frequentWords  <- findFreqTerms(frequentDTM, (NCOL(frequentDF)-1)*WORD_MIN_FREQ)
-trainSet <- trainSet[,frequentWords]
-testSet <- testSet[,frequentWords]
+i = 0
+testSetIndexes <- c((testSetCount*i+1):(testSetCount*(i+1)+1))
+trainSetIndexes <- c(1:nrow(frequentDTM))[-testSetIndexes]
+frequentWords  <- findFreqTerms(frequentDTM, (NCOL(frequentDTM)-1)*WORD_MIN_FREQ)
+frequentDTM <- frequentDTM[,frequentWords]
+labels <- as.factor(mainDF$class)
 
+# Set the trainingSet and the TestingSet
+trainSet <- as.matrix(frequentDTM[trainSetIndexes,])
+testSet <- as.matrix(frequentDTM[testSetIndexes,])
+trainSetLabels <- as.factor(labels[trainSetIndexes])
+testSetLabels <-  as.factor(labels[testSetIndexes])
+                            
+# Native classifier
+# Sys.time()
+# knnpred <- knn(trainSet, testSet, trainSetLabels, k = 3, l = 0, prob = FALSE)
+# Sys.time()
 
-
-# Classifier
-knnpred <- knnCustom.predict(trainSet, testSet, cl, k=1)
-knnpred <- knn(trainSet, testSet, cl, k = 1, l = 0, prob = FALSE)
+# Our classifier
+Sys.time()
+knnourpred <- knnCustom.predict(trainSet, testSet, trainSetLabels, k = 3, simMeasure = 1, isKplus = TRUE)
+Sys.time()
 
 # Confusion matrix
-confusionMat <- table(knnpred, clTest)
+#confusionMat <- table(knnpred, testSetLabels)
+#confusionMat
+confusionMat <- table(knnourpred, testSetLabels)
 confusionMat
-

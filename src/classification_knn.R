@@ -1,5 +1,5 @@
 
-knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weights = c(1,1)) {
+knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weight = NULL) {
   # Predicts the kNN classifier output
   #
   # Args:
@@ -16,62 +16,84 @@ knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure
   # Creating a model of a lazy classifier is useless and is only taking up the memory
   # So the model is not created
   # The prediction keeps its official form
-  distanceMatrix <- knnCustom.dist(trainSet, testSet, simMeasure)
+  classes <- sort (unique(trainClasses))
+
+  if(is.null(weight))
+    weight <- rep(1, length(classes))
+
+  if(length(weight)!=length(classes))
+    stop ("Weight vector is of different size than the unique number of classes")
   
-  # Generate the voteList of all the closestNeighbours
-  voteLists <- apply(distanceMatrix, 1,function(x){
-    if(isKplus) 
-      orderKPlus(x, k) 
-    else
-      order(x)[1:k]
-  })
+  closestNeighbours <- knnCustom.closestNeighbours(trainSet, testSet, simMeasure, k, isKplus)
   
   # Weighted votes Vectors
-  voteLists <- sapply(voteLists,function(x){
-    singleVote(x, weights, trainClasses)
-  })
+  voteLists <- t(sapply(closestNeighbours,function(x){
+    singleVote(x, weight, as.numeric(trainClasses))
+  }))
   
   # votes
-  class <- apply(voteLists, 2, function(x){
-    order(x)[-1]
+  class <- apply(voteLists,1, function(x){
+    classes[order(x, decreasing = TRUE)[1]]
   })
   
-  knnCustom.predict <- class
+  knnCustom.predict <- class 
 }
 
-knnCustom.dist <- function(trainSet, testSet, simMeasure = 0) {
-  # Computes the dissimilarity between two matrices
+knnCustom.closestNeighbours <- function(trainSet, testSet, simMeasure = 0, k = 1, isKplus = FALSE) {
+  # Computes the closestNeighbours for the vorting
   #
   # Args:
   #   trainSet: trainingsSet, to which distance is caluclated
   #   testSet: testSet, to which distance is calculated
   #   simMeasure: if 0: calculate euclidean, if 1: caluculate Cosine
+  #   k: parameter of closes neigbours
+  #   isKplus: parameter if the neighbours are to be k++
   #
   # Returns:
-  #   The matrices of a-b elements distances
+  #   The list of vectors of indices of the closes neighbours
   
   # For all the samples in a testing set and all the samples in a training
   # set, calculate distance
   
-  if(!is.data.frame(trainSet) || !is.data.frame(testSet))
+  if(!is.matrix(trainSet) || !is.matrix(testSet))
     stop ("TrainSet or TestSet are not matrices")
   else if(NCOL(trainSet)!=NCOL(testSet))
     stop ("TrainSet and TestSet have different number of arguments")
   
-  knnCustom.dist <- apply(trainSet, 1, function(x){
-    apply(testSet,1, function(y){
-      if(simMeasure == 0)
-        calculateEuclidean(x,y)
+  if(simMeasure == 0){
+    output <- list(nrow(testSet))  
+    for(x in 1:nrow(testSet)){
+      out <- list(nrow(trainSet))
+      for(y in 1:nrow(trainSet))
+        out[[y]] <- calculateEuclidean(testSet[x,], trainSet[y,])
+      
+      if(!isKplus)  
+        output[[x]] <- order(simplify2array(out))[1:k]
       else
-        calculateCosine(x,y)
-    })
-  })
-  
+        output[[x]] <- orderKPlus(simplify2array(out),k)
+    }
+    knnCustom.dist <- output
+  }
+  else{
+    output <- list(nrow(testSet))  
+    for(x in 1:nrow(testSet)){
+      out <- list(nrow(trainSet))
+      for(y in 1:nrow(trainSet))
+        out[[y]] <- calculateCosine(testSet[x,], trainSet[y,])
+      
+      if(!isKplus)  
+        output[[x]] <- order(simplify2array(out))[1:k]
+      else
+        output[[x]] <- orderKPlus(simplify2array(out),k)
+    }
+    knnCustom.dist <- output
+    }
+    knnCustom.dist <- output
+  }
 }
 
-
 calculateEuclidean <- function(a,b){
-  # Computes the euclidean dissimilarity (distance) between two vectors
+  # Computes the square of euclidean dissimilarity (distance) between two vectors
   #
   # Args:
   #   a: One of two vectors which are taken into consideration
@@ -79,16 +101,17 @@ calculateEuclidean <- function(a,b){
   #
   # Returns:
   #   The euclidean distance between vectors a and b (scalar)
-  
-  if(!is.vector(a) || !is.vector(b))
-    stop ("Input parameters must be one-dimensional arrays")
-  else if(length(a)!=length(b))
-    stop ("Input vectors are of different lengths in calculateEudclidean function")
-  
-  sum <- sum(mapply(function(x,y){(x-y)^2}, a, b))
 
-  calculateEuclidean <- sum^(1/2)
+  anew <- a[a!=b]
+  bnew <- b[a!=b]
+
+  sum<-0
   
+  if(length(anew)!=0){  
+    for(i in 1:length(anew))
+      sum = sum + (anew[i]-bnew[i])^2
+  }
+  calculateEuclidean <- sum
 }
 
 calculateCosine <- function(a,b){
@@ -102,18 +125,31 @@ calculateCosine <- function(a,b){
   #   The cosine reverse similarity (1-cossim) between vectors a and b (scalar)
   
   if(!is.vector(a) || !is.vector(b))
-    error("Input parameters must be one-dimensional arrays")
+    stop ("Input parameters must be one-dimensional arrays")
   else if(length(a)!=length(b))
-    error("Input vectors are of different lengths in calculateCosine function")
-
-  sumAB <- sum(mapply(function(x,y){x*y}, a, b))
-  sumA <- sum(sapply(a, function(x){x^2}))
-  sumB <- sum(sapply(b, function(x){x^2}))
+    stop ("Input vectors are of different lengths in calculateCosine function")
   
-  if(sumA!=0 && sumB!=0)
-    calculateCosine <- (1 - sumAB/(sumA*sumB)^(1/2))
-  else
-    calculateCosine <- 1
+  anew <- a[a!=b]
+  bnew <- b[a!=b]
+
+  sumAB <- 0
+  sumA <- 0
+  sumB <- 0
+  
+  if(length(anew)!=0){
+  for(i in 1:length(anew)){
+    sumAB <- sumAB + anew[i]*bnew[i]
+    sumA <- sumA + anew[i]^2
+    sumB <- sumB + bnew[i]^2
+  }
+  
+  
+    if(sumA!=0 && sumB!=0){
+      calculateCosine <- (1 - sumAB/(sumA*sumB)^(1/2))
+    } else{
+      calculateCosine <- 1
+    } } else calculateCosine <- 0
+
 }
 
 orderKPlus <- function(x, k) {
@@ -130,8 +166,7 @@ orderKPlus <- function(x, k) {
   ordered <- x[order(x)]
   
   i <- k
-  while(ordered[i]==ordered[k]){
-    print(ordered[i])
+  while(i <= length(x) && ordered[i]==ordered[k]){
     i <- i+1
   }
   
@@ -155,4 +190,3 @@ singleVote <- function(x, weights, trainClasses) {
   } )
   
 }
-
