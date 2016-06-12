@@ -24,7 +24,10 @@ all_articles  <- lapply(path_all_articles
                         , sep="\t"
                         , stringsAsFactors=FALSE
                         , header=FALSE)
-all_articles  <- Reduce(function(...) merge(..., all=TRUE), all_articles)
+all_articles  <- Reduce(function(...) merge(...
+                                            , all=TRUE
+                                            , sort=FALSE)
+                        , all_articles)
 
 # setting column names
 colnames(all_articles)  <- c("type", "message")

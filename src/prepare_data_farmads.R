@@ -14,7 +14,10 @@ WORD_MIN_FREQ  <- 0.001
 # reading data
 raw_data <- read.svmlight(path_data_farmads)
 data  <- raw_data$data
+data <- as.TermDocumentMatrix(data, weightTf)
+
 types  <- raw_data$labels
+types  <- factor(types)
 
 # splitting data
 set_count <- NROW(data)
