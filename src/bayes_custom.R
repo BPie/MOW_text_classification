@@ -1,16 +1,19 @@
-if(!exists("learn_set")) 
-{
-    source("prepare_data_sms.R")
-}
-library("gmodels")
+#' Naive Bayes classificator
+#'
+#' This function returns model for prediction using Naive Bayes 
+#' Classificator
+#' @param data data.frame of data to learn the classifier in form of DataTermMatrix with "Yes" or "No"
+#' @param types list of classes/types of examples given in data
+#' @param smoothing Lapplace-smoothing paraneter Default to 0
+#' @keywords naive bayes classification
+#' @export
+#' @examples
+#' mod <- myNaiveBayes(learn_set, learn_types, 0.0001)
+#' pred <- predict(mod, test_set)
 
 myNaiveBayes  <- function(data, types, smoothing=0)
 {
-  
     types_lvls  <- levels(types)
-    # assumption, that we learn for the first class 
-    # (and all the rest)
-    target_type  <- types_lvls[1]
 
     types_lvls_count <- length(types_lvls)
     bow_count  <- NCOL(data) # bag of words count
@@ -51,6 +54,18 @@ myNaiveBayes  <- function(data, types, smoothing=0)
     return(model)
 }
 
+
+#' Classification using Naive Bayes 
+#'
+#' This function returns predictions of given data types
+#' @param model model of Naive Bayes returned by naiveBayes function
+#' @param newdata data to be classified
+#' @keywords naive bayes classification
+#' @export
+#' @examples
+#' mod <- myNaiveBayes(learn_set, learn_types, 0.0001)
+#' pred <- predict(mod, test_set)
+
 predict.myNaiveBayes  <- function(model, newdata)
 {
     prob <- data.frame(matrix(ncol=NROW(newdata)
@@ -79,19 +94,3 @@ predict.myNaiveBayes  <- function(model, newdata)
     }
     return(rownames(prob)[apply(prob,2,which.max)])
 }
-# learning
-mod = myNaiveBayes(learn_set
-                   , learn_types
-                   , 0.0001)
-# predicting
-pred <- predict(mod
-                , test_set)
-
-# evaluation
-CrossTable(pred
-           , test_types
-           , prop.chisq=FALSE
-           , prop.t=FALSE
-           , dnn=c('predicted','actual'))
-
-
