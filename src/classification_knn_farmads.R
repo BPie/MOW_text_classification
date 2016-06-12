@@ -1,6 +1,7 @@
 library(tm) 
 library(class) 
 library(SnowballC) 
+library(RSofia)
 
 setwd("C:/Users/usr/Desktop/MOW_text_classification")
 
@@ -21,11 +22,7 @@ WORD_MIN_FREQ  <- 0.001
 
 
 # Read data
-mainDF <- read.csv("./datasets/sms.csv", 
-                   sep ="\t", 
-                   header = FALSE, 
-                   stringsAsFactors = FALSE, 
-                   quote = "")
+mainDF <- as.data.frame(read.svmlight("./datasets/farm.txt"))
 
 colnames(mainDF) <- c("class", "text")
 
@@ -75,7 +72,7 @@ testSetLabels <-  as.factor(labels[testSetIndexes])
 
 # Our classifier
 Sys.time()
-knnourpred <- knnCustom.predict(trainSet, testSet, trainSetLabels, k = 3, simMeasure = 1, isKplus = TRUE)
+knnourpred <- knnCustom.predict(trainSet, testSet, trainSetLabels, k = 7, simMeasure = 0, isKplus = TRUE)
 Sys.time()
 
 # Confusion matrix

@@ -1,21 +1,18 @@
-
+#' kNN+ classifier
+#'
+#' Predicts samples class using kNN classifier
+#' @param trainSet Training set 
+#' @param testSet Testing set
+#' @param trainClasses Labels of the training set
+#' @param k number of neighbours to obtains as voters for a class. DEFAULTs to 1.
+#' @param simMeasure 0: euclidean Distance, 1: cosine Dissimilarity. DEFAULTs to 0.
+#' @param isKplus if TRUE, knn+ is used else: knn is used. DEFAULTs to FALSE
+#' @param weights constant weights for voting for a given class. DEFAULTs to NULL
+#' @export
+#' @example
+#'  knn.pred <- knnCustom.predict(trainSet, testSet, trainSetLabels, k = 7, simMeasure = 0, isKplus = TRUE)
 knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure = 0, isKplus = FALSE, weight = NULL) {
-  # Predicts the kNN classifier output
-  #
-  # Args:
-  #   trainSet: Training set 
-  #   testSet: Testing set
-  #   trainClasses: Labels of the training set
-  #   k: number of neighbours to obtains as voters for a class
-  #   simMeasure: 0: euclidean Distance, 1: cosine Dissimilarity
-  #   isKplus: if TRUE, knn+ is used
-  #   weights: constant weights for voting for a given class
-  #
-  # Returns:
-  #   The kNN model of classifier
-  # Creating a model of a lazy classifier is useless and is only taking up the memory
-  # So the model is not created
-  # The prediction keeps its official form
+
   classes <- sort (unique(trainClasses))
 
   if(is.null(weight))
@@ -39,22 +36,19 @@ knnCustom.predict <- function(trainSet, testSet, trainClasses, k = 1, simMeasure
   knnCustom.predict <- class 
 }
 
+#' Neighbours generator for kNN
+#' 
+#' Computes the closestNeighbours for the vorting
+#' @param trainSet Training set 
+#' @param testSet Testing set
+#' @param simMeasure 0: euclidean Distance, 1: cosine Dissimilarity. DEFAULTs to 0.
+#' @param k number of neighbours to obtains as voters for a class. DEFAULTs to 1.
+#' @param isKplus if TRUE, knn+ is used else: knn is used. DEFAULTs to FALSE
+#' @export
+#' @example
+#'  closestNeighbours <- knnCustom.closestNeighbours(trainSet, testSet)
 knnCustom.closestNeighbours <- function(trainSet, testSet, simMeasure = 0, k = 1, isKplus = FALSE) {
-  # Computes the closestNeighbours for the vorting
-  #
-  # Args:
-  #   trainSet: trainingsSet, to which distance is caluclated
-  #   testSet: testSet, to which distance is calculated
-  #   simMeasure: if 0: calculate euclidean, if 1: caluculate Cosine
-  #   k: parameter of closes neigbours
-  #   isKplus: parameter if the neighbours are to be k++
-  #
-  # Returns:
-  #   The list of vectors of indices of the closes neighbours
-  
-  # For all the samples in a testing set and all the samples in a training
-  # set, calculate distance
-  
+
   if(!is.matrix(trainSet) || !is.matrix(testSet))
     stop ("TrainSet or TestSet are not matrices")
   else if(NCOL(trainSet)!=NCOL(testSet))
@@ -88,15 +82,21 @@ knnCustom.closestNeighbours <- function(trainSet, testSet, simMeasure = 0, k = 1
     }
     knnCustom.dist <- output
     }
-    knnCustom.dist <- output
-  }
 }
 
+#' Euclidian dissimilarity
+#' 
+#' Calculates Euclidean distance between two arrays
+#' @param a One of two vectors which are taken into consideration
+#' @param b Second of the vectors
+#' @export
+#' @example
+#'  calculateEuclidean(a,b)
 calculateEuclidean <- function(a,b){
   # Computes the square of euclidean dissimilarity (distance) between two vectors
   #
   # Args:
-  #   a: One of two vectors which are taken into consideration
+  #   a: 
   #   b: Second of the vectors
   #
   # Returns:
@@ -114,16 +114,15 @@ calculateEuclidean <- function(a,b){
   calculateEuclidean <- sum
 }
 
+#' Cosine dissimilarity
+#' 
+#' Calculates Cosine dissimilarity
+#' @param a One of two vectors which are taken into consideration
+#' @param b Second of the vectors
+#' @export
+#' @example
+#'  calculateCosine(a,b)
 calculateCosine <- function(a,b){
-  # Computes the cosine dissimilarity (distance) between two vectors
-  #
-  # Args:
-  #   a: One of two vectors which are taken into consideration
-  #   b: Second of the vectors
-  #
-  # Returns:
-  #   The cosine reverse similarity (1-cossim) between vectors a and b (scalar)
-  
   if(!is.vector(a) || !is.vector(b))
     stop ("Input parameters must be one-dimensional arrays")
   else if(length(a)!=length(b))
@@ -152,17 +151,15 @@ calculateCosine <- function(a,b){
 
 }
 
+#' kNN+ ordered array of votes
+#' 
+#' Calculates the ordered arrray of simple votes, if knn+ is used
+#' @param x Array to be ordered
+#' @param k Parameter of minimal length of the output array of indices
+#' @export
+#' @example
+#'  orderKPlus(a,k)
 orderKPlus <- function(x, k) {
-  # Get K++ neighbours for a sample of the testSet
-  #
-  # Args:
-  #   x: all the trainingSet's distances
-  #   k: nominal k value
-  #
-  # Returns:
-  #   Array of K++ size containing k nearest neighbour and the equal-distanced to the 
-  #   most remote one
-  
   ordered <- x[order(x)]
   
   i <- k
@@ -173,18 +170,16 @@ orderKPlus <- function(x, k) {
   orderKPlus <- order(x)[1:i-1]
 }
 
-
+#' Vote counter for kNN
+#' 
+#' Calculates votes for a given class for a given sample
+#' @param x Array to count votes for
+#' @param weights Weights of votes of specific classes
+#' @param trainClasses array of labels of the trainig Set
+#' @export
+#' @example
+#'  singleVote(x, weights, trainClasses)
 singleVote <- function(x, weights, trainClasses) {
-  # Counts the number of votes for each class based on weights and vector of labels of the training set
-  #
-  # Args:
-  #   x: Array of distances of a sample from all trainig samples
-  #   weights: An Array of weights for all the classes
-  #   trainClasses:  Vector of labels of the training Set
-  #
-  # Returns:
-  #   Array of votes for each class
-  
   singleVote <- sapply (1:length(weights), function(y){
     sum(weights[y]*as.numeric(trainClasses[x]==y))
   } )
