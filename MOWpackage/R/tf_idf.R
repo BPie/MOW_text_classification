@@ -31,13 +31,19 @@ tfidf.generate <- function(frequencyMatrix, normalization = 0){
 #' @param frequencyMatrix: Values of the DTM for a training set
 #' @export
 tfidf.calculateAverageTF <- function(frequencyMatrix) {
-  output<-apply(frequencyMatrix, 1, function(x){
-    x/sum(x)
-  } )
-
-  tfidf.calculateAverageTF<-t(output)
   
+  output<-t(apply(frequencyMatrix, 1, function(x){
+    x
+  } ))
+  
+  tfidf.calculateAverageTF <- output
 }
+
+
+if(suma==0)
+  k <- x/1000
+else
+  k <- x/suma
 
 #' Calculates IDF for a given frequencyMatrix
 #' 
@@ -49,8 +55,6 @@ tfidf.calculateLogIDF <- function(frequencyMatrix) {
   # For each term
   tfidf.calculateLogIDF<-apply(frequencyMatrix, 2, function(x){
     # Calculate the number of documents in which the term appears
-    log10(noOfDocuments/sum(as.numeric(x[x>0]))+1) 
+    log10((noOfDocuments/sum(as.numeric(x[x>0])))+1) 
   } )
 }
-
-

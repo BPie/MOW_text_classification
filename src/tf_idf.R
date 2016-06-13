@@ -24,7 +24,6 @@ tfidf.generate <- function(frequencyMatrix, normalization = 0){
   }
   else
     error("This type of normalization is cannot be handled")
-
 }
 
 #' Calculates normalized TF for a given frequencyMatrix
@@ -36,7 +35,12 @@ tfidf.generate <- function(frequencyMatrix, normalization = 0){
 #   tfidf.calculateAverageTF(frequencyMatrix)
 tfidf.calculateAverageTF <- function(frequencyMatrix) {
   output<-apply(frequencyMatrix, 1, function(x){
-    x/sum(x)
+    suma <- sum(c(x,0), rm.na=TRUE)
+    k <- x
+    if(suma==0)
+      x/1000
+    else
+      x/suma
   } )
 
   tfidf.calculateAverageTF<-t(output)
@@ -60,3 +64,5 @@ tfidf.calculateLogIDF <- function(frequencyMatrix) {
 }
 
 
+View(as.data.frame(testSet))
+is.na(testSet)[TRUE]
