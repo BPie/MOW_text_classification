@@ -49,7 +49,7 @@ tfidf.calculateLogIDF <- function(frequencyMatrix) {
   # For each term
   tfidf.calculateLogIDF<-apply(frequencyMatrix, 2, function(x){
     # Calculate the number of documents in which the term appears
-    log10(noOfDocuments/sum(as.numeric(x[x>0]))) + 1
+    log10(noOfDocuments/sum(as.numeric(x[x>0]))+1) 
   } )
 }
 
