@@ -1,12 +1,12 @@
+#' TF-IDF funcion
+#' 
+#'   Creates a new tfidf Matrix from frequency matrix
+#' @param frequencyMatrix: Values of the DTM for a training set
+#' @param normalization: weighting type fot TF*IDF, 0: without normalization, 1: with normalization. DEFAULTs as 0
+#' @export
+#' @example
+#   tfidf.generate(frequencyMatrix)
 tfidf.generate <- function(frequencyMatrix, normalization = 0){
-# Creates a new tfidf Matrix from frequency matrix
-#
-# Args:
-#   frequencyMatrix: Training set 
-#   normalization: weighting type fot TF*IDF
-#
-# Returns:
-#   The tfidf matrix
   
   if(normalization == 0){
     tf <- frequencyMatrix
@@ -27,22 +27,15 @@ tfidf.generate <- function(frequencyMatrix, normalization = 0){
 
 }
 
-frequencyMatrix <- matrix(c(1,1,1,0,0,0,1,1), byrow = TRUE, ncol=4)
-frequencyMatrix
-
+#' Calculates normalized TF for a given frequencyMatrix
+#' 
+#'   Creates a new TF Matrix from frequency matrix
+#' @param frequencyMatrix: Values of the DTM for a training set
+#' @export
+#' @example
+#   tfidf.calculateAverageTF(frequencyMatrix)
 tfidf.calculateAverageTF <- function(frequencyMatrix) {
-  # Calculate averaged value of term Frequency
-  # TF = <term_frequency>/<no_of_terms_in_a document>
-  #
-  # Args:
-  #   frequencyMatrix: Training set 
-  #
-  # Returns: 
-  #   Aforementioned TF
-  
-  # For each document
   output<-apply(frequencyMatrix, 1, function(x){
-    # Calculate the number of documents in which the term appears
     x/sum(x)
   } )
 
@@ -50,23 +43,20 @@ tfidf.calculateAverageTF <- function(frequencyMatrix) {
   
 }
 
+#' Calculates IDF for a given frequencyMatrix
+#' 
+#'   Creates a new IDF Matrix from frequency matrix
+#' @param frequencyMatrix: Values of the DTM for a training set
+#' @export
+#' @example
+#   tfidf.calculateLogIDF(frequencyMatrix)
 tfidf.calculateLogIDF <- function(frequencyMatrix) {
-  # Calculate a simple logarythmical form of IDF
-  # IDF = log(<no of documents>/<no of documents in which a given term appears>)
-  #
-  # Args:
-  #   frequencyMatrix: Training set 
-  #
-  # Returns: 
-  #   Specified IDF values
-  
   noOfDocuments <- NROW(frequencyMatrix)
   # For each term
   tfidf.calculateLogIDF<-apply(frequencyMatrix, 2, function(x){
     # Calculate the number of documents in which the term appears
     log10(noOfDocuments/sum(as.numeric(x[x>0])))
   } )
-
 }
 
 
